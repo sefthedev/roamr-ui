@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+
+// ToDo
+// ./core importieren
+// import { UserService } from "./core";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
-  title = 'roamr-ui';
+export class AppComponent implements OnInit {
+  // constructor(private userService: UserService) {}
+  constructor() {
+  }
+  ngOnInit() {
+    // this.userService.populate();
+  }
 }
