@@ -9,19 +9,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
-  constructor(
-    // private userService: UserService,
-    // private cd: ChangeDetectorRef
-  ) {}
+  navbarOpen = false;
 
-  // currentUser: User;
+  constructor() {}
 
-  ngOnInit() {
-    // this.userService.currentUser.subscribe(
-    //   (userData) => {
-    //     this.currentUser = userData;
-    //     this.cd.markForCheck();
-    //   }
-    // );
+  ngOnInit(): void {}
+
+  setNavbarOpen() {
+    this.navbarOpen = !this.navbarOpen;
   }
 }
