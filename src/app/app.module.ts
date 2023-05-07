@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FooterComponent, HeaderComponent} from "./layouts";
+import {FooterComponent, HeaderComponent} from "./components/landing";
 
 @NgModule({
   declarations: [ AppComponent, HeaderComponent, FooterComponent],

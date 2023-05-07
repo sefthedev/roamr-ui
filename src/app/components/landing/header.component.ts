@@ -1,7 +1,4 @@
-// import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-
-// import { User, UserService } from '../../core';
 
 @Component({
   selector: 'app-layout-header',
@@ -10,12 +7,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   navbarOpen = false;
+  isMenuOpen:boolean = false;
+  constructor() { }
 
-  constructor() {}
+  ngOnInit(): void { }
 
-  ngOnInit(): void {}
-
-  setNavbarOpen() {
-    this.navbarOpen = !this.navbarOpen;
-  }
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+   }
 }
