@@ -5,7 +5,7 @@
         class="inline-block py-1 ml-4 text-xl font-bold leading-relaxed text-white uppercase font">
         Roamr
       </a>
-      <a [routerLink]="['/signin']"
+      <a [routerLink]="['signin']"
         class="hidden px-3 py-1 mr-4 text-sm leading-relaxed text-white uppercase border-2 border-white rounded hover:shadow-xl lg:inline-block whitespace-nowrap">
         Sign in
       </a>
@@ -17,7 +17,7 @@
   </div>
   <div *ngIf="isMenuOpen" class="flex flex-col flex-wrap items-center justify-center w-full px-3 py-2 my-3 lg:hidden">
     <ul class="space-y-4">
-      <li><a [routerLink]="['/signin']" class="font-mono text-xl text-white uppercase">Sign in</a></li>
+      <li><a [routerLink]="['signin']" class="font-mono text-xl text-white uppercase">Sign in</a></li>
     </ul>
   </div>
 </nav>
