@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-50 flex flex-wrap items-center justify-between w-full h-auto px-2 py-3 navbar-background">
+<nav class="sticky top-0 z-50 flex flex-wrap items-center justify-center w-full h-auto px-2 py-3 navbar-background">
   <div class="container flex flex-wrap items-center justify-between px-4 mx-auto">
     <div class="relative flex items-center justify-between w-full">
       <a [routerLink]="['/']"
@@ -6,7 +6,7 @@
         Roamr
       </a>
       <label class="relative hidden lg:block">
-        <button (click)="searchForCity()" class="absolute inset-y-0 left-0 flex items-center px-2 bg-slate-500 rounded-l-md hover:bg-slate-800 hover:shadow-md">
+        <button (click)="searchForCity()" class="absolute inset-y-0 left-0 flex items-center px-2 bg-red-900 rounded-l-md hover:bg-red-950 hover:shadow-md">
           <i class="text-gray-400 pi pi-search"></i>
         </button>
         <input 
@@ -39,4 +39,5 @@
       <li class="flex justify-center"><a [routerLink]="['signin']" class="font-mono text-xl text-white uppercase">Sign in</a></li>
     </ul>
   </div>
+  <ng-content></ng-content>
 </nav>
