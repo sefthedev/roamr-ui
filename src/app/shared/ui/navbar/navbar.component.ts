@@ -7,11 +7,18 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   isMenuOpen:boolean = false;
+  searchTerm: string = '';
+  
   constructor() { }
 
   ngOnInit(): void { }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-   }
+  }
+
+  searchForCity(){
+    console.log(this.searchTerm);
+  }
+
 }
