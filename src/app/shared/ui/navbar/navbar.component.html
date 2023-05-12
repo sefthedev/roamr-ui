@@ -1,5 +1,5 @@
 <nav
-  class="fixed top-0 z-20 flex flex-row flex-wrap items-center justify-between w-full text-3xl font-bold align-middle font-anonymous py-9 bg-textWhite">
+  class="fixed z-20 flex flex-row flex-wrap items-center justify-between w-full pt-32 text-3xl font-bold align-middle -top-28 font-anonymous pb-7 bg-textWhite">
 
   <div class="z-30 py-0 ml-12 md:ml-16 text-primary"><img class="xs:min-w-[140px] min-w-[80px] w-20 xs:w-36"
       src="/assets/icons/logo.svg" alt="Logo"></div>
@@ -11,11 +11,10 @@
     <i class="z-30 block font-extrabold pi xs:hidden text-primary-dark" [ngClass]="isMenuOpen? 'pi-angle-right' : 'pi-bars' " (click)="toggleMenu()"></i>
   </div>
 
-  <div class="absolute top-0 w-screen h-screen transition-transform duration-500 menu-container xs:hidden left-full bg-textWhite" [ngClass]="{'-translate-x-full': isMenuOpen}">
+  <div class="absolute top-0 w-screen h-screen transition-transform duration-500 mt-28 menu-container xs:hidden left-full bg-textWhite" [ngClass]="{'-translate-x-full': isMenuOpen}">
     <div class="flex flex-col items-center mt-32 list-none text-md menu-items font-poppins gap-7">
       <li><a href="#" class="font-normal text-primary-dark hover:font-extrabold">Sign In</a></li>
       <li><a href="#" class="font-extralight hover:font-semibold text-primary">Sign Up</a></li>
     </div>
   </div>
 </nav>
-<div class="mt-24"></div>

@@ -11,7 +11,7 @@ import { HighlightComponent } from './highlight/highlight.component';
 
 @NgModule({
   declarations: [NavbarComponent, DestinationBoxComponent, ButtonComponent, HighlightComponent],
-  exports: [NavbarComponent, DestinationBoxComponent, ButtonComponent],
+  exports: [NavbarComponent, DestinationBoxComponent, ButtonComponent, HighlightComponent],
   imports: [CommonModule, RouterModule, FormsModule ]
 })
 export class UiModule { }
