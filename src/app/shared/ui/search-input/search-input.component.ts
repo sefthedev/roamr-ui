@@ -3,13 +3,11 @@ import { Component, ElementRef, Input } from '@angular/core';
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss']
+  styleUrls: ['./search-input.component.scss'],
 })
 export class SearchInputComponent {
   @Input() placeholder = '';
   searchvalue = '';
-  
-  searchInput() {
 
-  }
+  searchInput() {}
 }

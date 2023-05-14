@@ -7,12 +7,25 @@ import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from './button/button.component';
 import { HighlightComponent } from './highlight/highlight.component';
 import { SearchInputComponent } from './search-input/search-input.component';
-
-
+import { SuggestionsComponent } from './suggestions/suggestions.component';
 
 @NgModule({
-  declarations: [NavbarComponent, DestinationBoxComponent, ButtonComponent, HighlightComponent, SearchInputComponent],
-  exports: [NavbarComponent, DestinationBoxComponent, ButtonComponent, HighlightComponent, SearchInputComponent],
-  imports: [CommonModule, RouterModule, FormsModule ]
+  declarations: [
+    NavbarComponent,
+    DestinationBoxComponent,
+    ButtonComponent,
+    HighlightComponent,
+    SearchInputComponent,
+    SuggestionsComponent,
+  ],
+  exports: [
+    NavbarComponent,
+    DestinationBoxComponent,
+    ButtonComponent,
+    HighlightComponent,
+    SearchInputComponent,
+    SuggestionsComponent,
+  ],
+  imports: [CommonModule, RouterModule, FormsModule],
 })
-export class UiModule { }
+export class UiModule {}
