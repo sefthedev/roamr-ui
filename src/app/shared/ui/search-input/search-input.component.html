@@ -1,4 +1,4 @@
-<div class="flex flex-nowrap">
+<form [formGroup]="searchForm" class="flex flex-nowrap" (ngSubmit)="searchInput()">
   <div
     class="relative flex w-full lg:max-w-xl min-w-[80vw] xs:min-w-[auto] flex-nowrap"
   >
@@ -6,22 +6,21 @@
       class="w-full py-2 pl-12 pr-4 text-lg placeholder-gray-400 bg-transparent border-none rounded-lg shadow-inner outline-none font-poppins focus:border-none text-textDark"
       type="text"
       placeholder="{{ placeholder }}"
-      #searchbox
-      [(ngModel)]="searchvalue"
+      formControlName="searchValue"
     />
     <i
       class="absolute transform -translate-y-1/2 -z-20 top-1/2 left-4 pi pi-search"
       [ngClass]="{
-        'text-textDark': searchbox.value,
-        'text-gray-400': !searchbox.value
+        'text-textDark': searchForm.value.searchValue,
+        'text-gray-400': !searchForm.value.searchValue
       }"
     ></i>
     <div class="absolute right-0">
       <app-button
-        (click)="searchInput()"
+        [submit]="true"
         color="primary"
         text="Search"
       ></app-button>
     </div>
   </div>
-</div>
+</form>

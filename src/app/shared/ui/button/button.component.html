@@ -1,5 +1,10 @@
 <button
-    class="flex items-center justify-center w-auto px-5 py-2 text-{{textSize}} hover:shadow-md shadow-inner rounded-lg whitespace-nowrap font-extralight text-textWhite font-poppins"
-    [ngClass]="getColorClass()">
-    <i class="{{icon}} pi mr-2" *ngIf="icon"></i>{{text}}
+  [type]="getType()"
+  (click)="handleClick()"
+  class="flex items-center justify-center w-auto px-5 py-2 text-{{
+    textSize
+  }} hover:shadow-md shadow-inner rounded-lg whitespace-nowrap font-extralight text-textWhite font-poppins"
+  [ngClass]="getColorClass()"
+>
+  <i class="{{ icon }} pi mr-2" *ngIf="icon"></i>{{ text }}
 </button>
