@@ -1,0 +1,40 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-button',
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.scss']
+})
+export class ButtonComponent {
+  @Input() icon? = '';
+  @Input() submit?: boolean;
+  @Input() text = '';
+  @Input() color = '';
+  @Input() textSize = '';
+  @Output() buttonClick: EventEmitter<void> = new EventEmitter<void>();
+
+  constructor() {
+
+  }
+
+  getType(): string {
+    return this.submit ? 'submit' : 'button';
+  }
+
+  handleClick(): void {
+    this.buttonClick.emit();
+  }
+
+  getColorClass(): string {
+    switch (this.color) {
+      case 'primary':
+        return 'bg-primary hover:bg-primary-background hover:text-primary';
+      case 'secondary':
+        return 'bg-secondary hover:bg-secondary-background hover:text-secondary';
+      case 'tertiary':
+        return 'bg-tertiary hover:bg-tertiary-background hover:text-tertiary';
+      default:
+        return '';
+    }
+  }
+}

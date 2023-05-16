@@ -1,35 +1,63 @@
-<app-navbar>
-    <div class="flex items-center justify-center px-12 py-5">
-        <div class="flex mx-8 mt-12"><h1 class="font-mono text-5xl font-semibold text-white shadow-xl">Explore the world on your terms with Roamr</h1></div>
-    </div>
-</app-navbar>
-<div class="absolute flex items-start justify-center w-full p-0 m-0 flex-nowrap">
-    <div class="flex flex-col items-center px-4 mx-auto">
-        <div class="flex items-start justify-center py-8">
-            <h2 class="font-mono text-2xl font-bold">Roam and Discover</h2>
-        </div>
-        <div class="w-full my-0">
-            <div class="flex flex-wrap justify-center max-w-4xl">
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'" [destinationName]="'Restaurant1'">
-                </app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'" [destinationName]="'Restaurant2'">
-                </app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'" [destinationName]="'Restaurant2'">
-                </app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'"
-                    [destinationName]="'Restaurant2'"></app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'"
-                    [destinationName]="'Restaurant2'"></app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'"
-                    [destinationName]="'Restaurant2'"></app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'"
-                    [destinationName]="'Restaurant2'"></app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'"
-                    [destinationName]="'Restaurant2'"></app-destination-box>
-                <app-destination-box [imageURL]="'https://picsum.photos/400/300'"
-                    [destinationName]="'Restaurant2'"></app-destination-box>
+<app-navbar></app-navbar>
 
-            </div>
-        </div>
+<div class="mt-36">
+  <app-highlight></app-highlight>
+</div>
+
+<div class="mt-28">
+  <app-suggestions></app-suggestions>
+</div>
+
+<div class="absolute flex items-start justify-center w-full p-0 flex-nowrap">
+  <div class="flex flex-col items-center px-4 mx-auto">
+    <div class="flex items-start justify-center py-8">
+      <h2 class="text-2xl font-bold font-anonymous text-color">
+        Roam and Discover
+      </h2>
     </div>
+    <div class="w-full my-0">
+      <div class="flex flex-wrap justify-center max-w-4xl">
+        +
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant1'"
+        >
+        </app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        >
+        </app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        >
+        </app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        ></app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        ></app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        ></app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        ></app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        ></app-destination-box>
+        <app-destination-box
+          [imageURL]="'https://picsum.photos/400/300'"
+          [destinationName]="'Restaurant2'"
+        ></app-destination-box>
+      </div>
+    </div>
+  </div>
 </div>
