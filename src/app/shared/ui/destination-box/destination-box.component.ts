@@ -15,7 +15,6 @@ export class DestinationBoxComponent implements OnInit {
 
   ngOnInit(): void {
     this.stars = this.stars.fill('pi-star-fill', 0, this.starsCount);
-    console.log(this.stars);
   }
 
   saveDestination() {
