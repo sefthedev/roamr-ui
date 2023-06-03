@@ -34,7 +34,7 @@ export class ButtonComponent {
       case 'tertiary':
         return 'bg-tertiary hover:bg-tertiary-background hover:text-tertiary border-transparent text-textWhite';
       default:
-        return '';
+        return 'bg-transparent text-textDark border-transparent shadow-none hover:shadow-none hover:text-shadow';
     }
   }
 }
