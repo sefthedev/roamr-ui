@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-button',
   templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+  styleUrls: ['./button.component.scss'],
 })
 export class ButtonComponent {
   @Input() icon? = '';
@@ -13,9 +13,7 @@ export class ButtonComponent {
   @Input() textSize = '';
   @Output() buttonClick: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor() {
-
-  }
+  constructor() {}
 
   getType(): string {
     return this.submit ? 'submit' : 'button';
@@ -28,11 +26,13 @@ export class ButtonComponent {
   getColorClass(): string {
     switch (this.color) {
       case 'primary':
-        return 'bg-primary hover:bg-primary-background hover:text-primary';
+        return 'bg-primary hover:bg-primary-background hover:text-primary border-transparent text-textWhite';
+      case 'primary-inverse':
+        return 'bg-textWhite hover:bg-primary-background border-primary text-primary';
       case 'secondary':
-        return 'bg-secondary hover:bg-secondary-background hover:text-secondary';
+        return 'bg-secondary hover:bg-secondary-background hover:text-secondary border-transparent text-textWhite';
       case 'tertiary':
-        return 'bg-tertiary hover:bg-tertiary-background hover:text-tertiary';
+        return 'bg-tertiary hover:bg-tertiary-background hover:text-tertiary border-transparent text-textWhite';
       default:
         return '';
     }
