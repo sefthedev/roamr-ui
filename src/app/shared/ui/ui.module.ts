@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar';
-import { DestinationBoxComponent } from './destination-box/destination-box.component';
+import {
+  NavbarComponent,
+  DestinationBoxComponent,
+  ButtonComponent,
+  SearchInputComponent,
+  FooterComponent,
+} from '@shared/ui';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ButtonComponent } from './button/button.component';
-import { SearchInputComponent } from './search-input/search-input.component';
 
 @NgModule({
   declarations: [
@@ -13,12 +16,14 @@ import { SearchInputComponent } from './search-input/search-input.component';
     DestinationBoxComponent,
     ButtonComponent,
     SearchInputComponent,
+    FooterComponent,
   ],
   exports: [
     NavbarComponent,
     DestinationBoxComponent,
     ButtonComponent,
     SearchInputComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
 })
