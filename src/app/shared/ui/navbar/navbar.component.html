@@ -14,7 +14,8 @@
   >
     <div class="items-center hidden xs:flex">
       <a
-        [routerLink]="'signup'"
+        [routerLink]="'/auth'"
+        [fragment]="'signup'"
         class="mr-8 text-sm font-light text-primary font-poppins hover:underline"
         >Sign up</a
       ><app-button
@@ -41,12 +42,12 @@
       class="flex flex-col items-center mt-32 list-none text-md menu-items font-poppins gap-7"
     >
       <li>
-        <a href="#" class="font-normal text-primary-dark hover:font-extrabold"
+        <a [routerLink]="'/auth'" class="font-normal text-primary-dark hover:font-extrabold"
           >Sign In</a
         >
       </li>
       <li>
-        <a href="#" class="font-extralight hover:font-semibold text-primary"
+        <a [routerLink]="'/auth'" [fragment]="'signup'" class="font-extralight hover:font-semibold text-primary"
           >Sign Up</a
         >
       </li>

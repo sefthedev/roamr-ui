@@ -1,1 +1,111 @@
-<p>signup works!</p>
+<div class="flex flex-col justify-between">
+  <h2 class="mb-8 text-4xl font-medium font-poppins text-textDark">Sign up</h2>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="signupForm"
+    class="flex flex-col justify-between gap-8"
+  >
+    <div class="flex flex-col">
+      <label for="email" class="text-base text-gray-700 font-poppins"
+        >Email
+      </label>
+      <input
+        type="email"
+        formControlName="email"
+        id="email"
+        name="email"
+        class="border-[1px] px-3 py-1 rounded-md h-12 font-poppins text-textDark text-base outline-secondary"
+      />
+    </div>
+
+    <div class="flex flex-col">
+      <label for="username" class="text-base text-gray-700 font-poppins"
+        >Username
+      </label>
+      <input
+        formControlName="username"
+        type="text"
+        id="username"
+        name="username"
+        class="border-[1px] px-3 py-1 rounded-md h-12 font-poppins text-textDark text-base outline-secondary"
+      />
+    </div>
+
+    <div class="flex flex-col w-full">
+      <label for="password" class="text-base text-gray-700 font-poppins"
+        >Password</label
+      >
+      <span
+        class="text-xs text-red-600"
+        *ngIf="
+          this.signupForm.get('password')?.touched &&
+          this.signupForm.get('password')?.invalid
+        "
+      >
+        Password should contain at least one lowercase letter, one uppercase
+        letter, one number, and be at least 8 characters long.
+      </span>
+
+      <div class="relative flex flex-row items-center w-full">
+        <input
+          [ngClass]="{'border-red-600':passwordControl}"
+          formControlName="password"
+          type="{{ showPassword ? 'text' : 'password' }}"
+          id="password"
+          name="password"
+          class="border-[1px] px-3 py-1 rounded-md h-12 font-poppins w-full text-textDark text-base outline-secondary"
+        />
+        <i
+          [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'"
+          class="absolute flex items-center gap-2 text-xl text-gray-700 font-extralight pi right-2 hover:cursor-pointer"
+          (click)="hidePassword()"
+        ></i>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <app-button
+        [submit]="true"
+        textSize="xl"
+        icon="pi-user-plus"
+        color="primary"
+        text="Sign up"
+      ></app-button>
+      <div
+        class="flex flex-row items-center justify-between text-base align-baseline text-textDark font-poppins"
+      >
+        <div class="relative flex flex-row items-start gap-3">
+          <i
+            *ngIf="this.termsChecked"
+            class="absolute flex text-xs font-extrabold text-textWhite pointer-events-none bottom-[10px] z-60 self-baseline pi-check pi"
+          ></i>
+          <input
+            [ngClass]="{'border-red-600':checkboxControl}"
+            formControlName="checkbox"
+            (click)="checkTerms()"
+            type="checkbox"
+            id="terms"
+            name="terms"
+            class="w-3 p-0 h-3 shrink-0 border-[1px] border-primary appearance-none checked:bg-primary"
+          />
+          <label for="terms" class="max-w-[240px] text-xs leading-none"
+            >I have reviewed and hereby consent to the
+            <a
+              href="https://en.wikipedia.org/wiki/Terms_of_service"
+              class="hover:underline text-primary-dark"
+              target="_blank"
+              >terms of service</a
+            >.</label
+          >
+        </div>
+
+        <div
+          (click)="this.signin.emit()"
+          class="self-start font-medium leading-none whitespace-nowrap hover:cursor-pointer hover:underline text-primary-dark"
+        >
+          Sign in
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

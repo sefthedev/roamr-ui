@@ -3,7 +3,7 @@
   <form action="" class="flex flex-col justify-between gap-8">
     <div class="flex flex-col">
       <label for="emailUsername" class="text-base text-gray-700 font-poppins"
-        >First Name
+        >Email or username
       </label>
       <input
         type="text"
@@ -41,20 +41,25 @@
         text="Sign in"
       ></app-button>
       <div
-        class="flex flex-row items-center gap-3 text-base text-textDark font-poppins"
+        class="flex flex-row items-center justify-between text-base text-textDark font-poppins"
       >
-        <i
-          *ngIf="this.rememberSignIn"
-          class="absolute flex items-center gap-2 text-xs font-extrabold transition-all duration-500 pointer-events-none text-textWhite pi-check pi left-10"
-        ></i>
-        <input
-          (click)="rememberChecked()"
-          type="checkbox"
-          id="remember"
-          name="remember"
-          class="w-3 p-0 h-3 border-[1px] border-primary appearance-none checked:bg-primary"
-        />
-        <label for="remember">Remember me</label>
+        <div class="flex flex-row items-center gap-3 align-baseline ">
+          <i
+            *ngIf="this.rememberSignIn"
+            class="absolute flex items-center gap-2 text-xs font-extrabold transition-all duration-500 pointer-events-none text-textWhite pi-check pi left-10"
+          ></i>
+          <input
+            (click)="rememberChecked()"
+            type="checkbox"
+            id="remember"
+            name="remember"
+            class="w-3 p-0 h-3 shrink-0 border-[1px] border-primary appearance-none checked:bg-primary"
+          />
+          <label for="remember" class="text-sm md:text-base">Remember me</label>
+        </div>
+        <div (click)="this.signup.emit()" class="self-start font-medium whitespace-nowrap hover:cursor-pointer hover:underline text-primary-dark">
+          Sign up
+        </div>
       </div>
     </div>
   </form>
