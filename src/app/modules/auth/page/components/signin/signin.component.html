@@ -1,12 +1,17 @@
 <div class="flex flex-col justify-between">
   <h2 class="mb-8 text-4xl font-medium font-poppins text-textDark">Sign in</h2>
-  <form action="" class="flex flex-col justify-between gap-8">
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="signinForm"
+    class="flex flex-col justify-between gap-8"
+  >
     <div class="flex flex-col">
       <label for="emailUsername" class="text-base text-gray-700 font-poppins"
         >Email or username
       </label>
       <input
         type="text"
+        formControlName="email"
         id="emailUsername"
         name="emailUsername"
         class="border-[1px] px-3 py-1 rounded-md h-12 font-poppins text-textDark text-base outline-secondary"
@@ -21,6 +26,7 @@
       <div class="relative flex flex-row items-center w-full">
         <input
           type="{{ showPassword ? 'text' : 'password' }}"
+          formControlName="password"
           id="password"
           name="password"
           class="border-[1px] px-3 py-1 rounded-md h-12 font-poppins w-full text-textDark text-base outline-secondary"
@@ -35,6 +41,7 @@
 
     <div class="flex flex-col gap-4">
       <app-button
+        [submit]="true"
         textSize="xl"
         icon="pi-sign-in"
         color="primary"
@@ -43,7 +50,7 @@
       <div
         class="flex flex-row items-center justify-between text-base text-textDark font-poppins"
       >
-        <div class="flex flex-row items-center gap-3 align-baseline ">
+        <div class="flex flex-row items-center gap-3 align-baseline">
           <i
             *ngIf="this.rememberSignIn"
             class="absolute flex items-center gap-2 text-xs font-extrabold transition-all duration-500 pointer-events-none text-textWhite pi-check pi left-10"
@@ -57,7 +64,10 @@
           />
           <label for="remember" class="text-sm md:text-base">Remember me</label>
         </div>
-        <div (click)="this.signup.emit()" class="self-start font-medium whitespace-nowrap hover:cursor-pointer hover:underline text-primary-dark">
+        <div
+          (click)="this.signup.emit()"
+          class="self-start font-medium whitespace-nowrap hover:cursor-pointer hover:underline text-primary-dark"
+        >
           Sign up
         </div>
       </div>

@@ -9,7 +9,12 @@
       <label for="email" class="text-base text-gray-700 font-poppins"
         >Email
       </label>
+      <span class="text-xs text-red-600" *ngIf="emailControl">
+        Invalid email address.
+      </span>
+
       <input
+        [ngClass]="{ 'border-red-600': emailControl }"
         type="email"
         formControlName="email"
         id="email"
@@ -22,7 +27,11 @@
       <label for="username" class="text-base text-gray-700 font-poppins"
         >Username
       </label>
+      <span class="text-xs text-red-600" *ngIf="usernameControl">
+        Please enter a valid username.
+      </span>
       <input
+        [ngClass]="{ 'border-red-600': usernameControl }"
         formControlName="username"
         type="text"
         id="username"
@@ -35,20 +44,14 @@
       <label for="password" class="text-base text-gray-700 font-poppins"
         >Password</label
       >
-      <span
-        class="text-xs text-red-600"
-        *ngIf="
-          this.signupForm.get('password')?.touched &&
-          this.signupForm.get('password')?.invalid
-        "
-      >
-        Password should contain at least one lowercase letter, one uppercase
-        letter, one number, and be at least 8 characters long.
+      <span class="text-xs text-red-600" *ngIf="passwordControl">
+        Create a secure password by including at least 8 characters, one
+        lowercase letter, one uppercase letter, and one number.
       </span>
 
       <div class="relative flex flex-row items-center w-full">
         <input
-          [ngClass]="{'border-red-600':passwordControl}"
+          [ngClass]="{ 'border-red-600': passwordControl }"
           formControlName="password"
           type="{{ showPassword ? 'text' : 'password' }}"
           id="password"
@@ -74,31 +77,35 @@
       <div
         class="flex flex-row items-center justify-between text-base align-baseline text-textDark font-poppins"
       >
-        <div class="relative flex flex-row items-start gap-3">
-          <i
-            *ngIf="this.termsChecked"
-            class="absolute flex text-xs font-extrabold text-textWhite pointer-events-none bottom-[10px] z-60 self-baseline pi-check pi"
-          ></i>
-          <input
-            [ngClass]="{'border-red-600':checkboxControl}"
-            formControlName="checkbox"
-            (click)="checkTerms()"
-            type="checkbox"
-            id="terms"
-            name="terms"
-            class="w-3 p-0 h-3 shrink-0 border-[1px] border-primary appearance-none checked:bg-primary"
-          />
-          <label for="terms" class="max-w-[240px] text-xs leading-none"
-            >I have reviewed and hereby consent to the
-            <a
-              href="https://en.wikipedia.org/wiki/Terms_of_service"
-              class="hover:underline text-primary-dark"
-              target="_blank"
-              >terms of service</a
-            >.</label
-          >
+        <div class="flex flex-col">
+          <div class="relative flex flex-row items-start gap-3">
+            <i
+              *ngIf="this.termsChecked"
+              class="absolute flex text-xs font-extrabold text-textWhite pointer-events-none bottom-[10px] z-60 self-baseline pi-check pi"
+            ></i>
+            <input
+              [ngClass]="{ 'border-red-600': checkboxControl }"
+              formControlName="checkbox"
+              (click)="checkTerms()"
+              type="checkbox"
+              id="terms"
+              name="terms"
+              class="w-3 p-0 h-3 shrink-0 border-[1px] border-primary appearance-none checked:bg-primary"
+            />
+            <label for="terms" class="max-w-[240px] text-xs leading-none"
+              >I have reviewed and hereby consent to the
+              <a
+                href="https://en.wikipedia.org/wiki/Terms_of_service"
+                class="hover:underline text-primary-dark"
+                target="_blank"
+                >terms of service</a
+              >.</label
+            >
+          </div>
+          <span class="text-xs text-red-600" *ngIf="checkboxControl">
+            Please agree to the terms of service to proceed.
+          </span>
         </div>
-
         <div
           (click)="this.signin.emit()"
           class="self-start font-medium leading-none whitespace-nowrap hover:cursor-pointer hover:underline text-primary-dark"

@@ -1,1 +1,2 @@
-export * from './core.module';
+export * from './firebase-auth/firebase-auth.module';
+export * from './models/user';

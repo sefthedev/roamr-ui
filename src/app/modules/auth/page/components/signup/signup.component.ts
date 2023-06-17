@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
+import { FirebaseAuthService } from '@app/core/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,11 +11,14 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class SignupComponent implements OnInit {
   termsChecked: boolean = false;
   showPassword: boolean = false;
+  isSubmitted: boolean = false;
   @Output() signin: EventEmitter<void> = new EventEmitter<void>();
 
+  constructor(private firebaseAuthService: FirebaseAuthService) {}
+  
   signupForm = new FormGroup({
-    email: new FormControl(''),
-    username: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    username: new FormControl('', [Validators.required]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/),
@@ -23,31 +27,19 @@ export class SignupComponent implements OnInit {
   });
 
   get passwordControl() {
-    return (
-      this.signupForm.get('password')?.touched &&
-      this.signupForm.get('password')?.invalid
-    );
+    return this.isSubmitted && this.signupForm.get('password')?.invalid;
   }
 
   get checkboxControl() {
-    return (
-      this.signupForm.get('checkbox')?.touched &&
-      this.signupForm.get('checkbox')?.invalid
-    );
+    return this.isSubmitted && this.signupForm.get('checkbox')?.invalid;
   }
 
   get emailControl() {
-    return (
-      this.signupForm.get('email')?.touched &&
-      this.signupForm.get('email')?.invalid
-    );
+    return this.isSubmitted && this.signupForm.get('email')?.invalid;
   }
 
   get usernameControl() {
-    return (
-      this.signupForm.get('username')?.touched &&
-      this.signupForm.get('username')?.invalid
-    );
+    return this.isSubmitted && this.signupForm.get('username')?.invalid;
   }
 
   ngOnInit(): void {}
@@ -61,7 +53,15 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
+    const email = this.signupForm.get('email')?.value;
+    const password = this.signupForm.get('password')?.value;
+
+    if (email && password) {
+      this.firebaseAuthService.SignUp(email, password);
+    }
+
+    this.isSubmitted = true;
     console.log('submit');
-    console.log(this.signupForm.value.password);
+    console.log(this.signupForm);
   }
 }
