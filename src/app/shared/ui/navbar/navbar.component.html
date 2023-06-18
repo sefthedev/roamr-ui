@@ -12,7 +12,7 @@
   <div
     class="flex flex-row items-center justify-between py-0 mr-12 flex-nowrap md:mr-16"
   >
-    <div class="items-center hidden xs:flex">
+    <div class="items-center hidden xs:flex" *ngIf="!isLoggedIn">
       <a
         [routerLink]="'/auth'"
         [fragment]="'signup'"
@@ -27,6 +27,21 @@
         #signIn
       ></app-button>
     </div>
+    <!-- isLoggedIn == True -->
+    <div class="items-center hidden xs:flex" *ngIf="isLoggedIn">
+      <a
+        [routerLink]="'/home'"
+        (click)="this.signOut()"
+        class="mr-8 text-sm font-light text-primary font-poppins hover:underline hover"
+        >Sign Out</a
+      ><app-button
+        [routerLink]="'/profile'"
+        color="icon-primary"
+        textSize="lg"
+        icon="pi-user"
+      ></app-button>
+    </div>
+
     <i
       class="z-30 block font-extrabold pi xs:hidden text-primary-dark"
       [ngClass]="isMenuOpen ? 'pi-angle-right' : 'pi-bars'"
@@ -41,14 +56,35 @@
     <div
       class="flex flex-col items-center mt-32 list-none text-md menu-items font-poppins gap-7"
     >
-      <li>
-        <a [routerLink]="'/auth'" class="font-normal text-primary-dark hover:font-extrabold"
+      <li *ngIf="!isLoggedIn">
+        <a
+          [routerLink]="'/auth'"
+          class="font-normal text-primary-dark hover:font-extrabold"
           >Sign In</a
         >
       </li>
-      <li>
-        <a [routerLink]="'/auth'" [fragment]="'signup'" class="font-extralight hover:font-semibold text-primary"
+      <li *ngIf="!isLoggedIn">
+        <a
+          [routerLink]="'/auth'"
+          [fragment]="'signup'"
+          class="font-extralight hover:font-semibold text-primary"
           >Sign Up</a
+        >
+      </li>
+
+      <li *ngIf="isLoggedIn">
+        <a
+          [routerLink]="'/profile'"
+          class="font-normal text-primary-dark hover:font-extrabold"
+          >Profile</a
+        >
+      </li>
+      <li *ngIf="isLoggedIn">
+        <a
+          [routerLink]="'/home'"
+          (click)="this.signOut()"
+          class="font-extralight hover:font-semibold text-primary"
+          >Sign Out</a
         >
       </li>
     </div>

@@ -15,7 +15,7 @@ export class SignupComponent implements OnInit {
   @Output() signin: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private firebaseAuthService: FirebaseAuthService) {}
-  
+
   signupForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     username: new FormControl('', [Validators.required]),
@@ -55,13 +55,11 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     const email = this.signupForm.get('email')?.value;
     const password = this.signupForm.get('password')?.value;
+    const username = this.signupForm.get('username')?.value;
 
-    if (email && password) {
-      this.firebaseAuthService.SignUp(email, password);
+    if (email && password && username) {
+      this.firebaseAuthService.SignUp(email, password, username)
     }
-
     this.isSubmitted = true;
-    console.log('submit');
-    console.log(this.signupForm);
   }
 }

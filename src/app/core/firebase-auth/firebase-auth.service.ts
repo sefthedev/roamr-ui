@@ -1,6 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '@core/models/user';
-import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
@@ -34,7 +33,7 @@ export class FirebaseAuthService {
   }
   // Sign in with email/password
   SignIn(email: string, password: string) {
-    return this.afAuth
+    this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.SetUserData(result.user);
@@ -49,15 +48,21 @@ export class FirebaseAuthService {
       });
   }
   // Sign up with email/password
-  SignUp(email: string, password: string) {
-    return this.afAuth
+  SignUp(email: string, password: string, displayName: string) {
+    this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
+        if (result.user) {
+          result.user.updateProfile({
+            displayName: displayName,
+          });
+        }
         this.SendVerificationMail();
         this.SetUserData(result.user);
+        return result;
       })
+      .then(() => this.SignOut())
+      .then(() => this.SignIn(email, password))
       .catch((error) => {
         window.alert(error.message);
       });
@@ -84,26 +89,9 @@ export class FirebaseAuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null ? true : false;
   }
-  // Sign in with Google
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['dashboard']);
-    });
-  }
-  // Auth logic to run auth providers
-  AuthLogin(provider: any) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        this.router.navigate(['dashboard']);
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
+
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
@@ -113,6 +101,7 @@ export class FirebaseAuthService {
     );
     const userData: User = {
       uid: user.uid,
+      displayName: user.displayName,
       email: user.email,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
@@ -121,6 +110,7 @@ export class FirebaseAuthService {
       merge: true,
     });
   }
+
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
