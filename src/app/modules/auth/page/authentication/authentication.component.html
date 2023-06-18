@@ -1,0 +1,27 @@
+<div
+  class="relative flex items-center justify-center w-screen h-screen overflow-hidden bg-opacity-60 bg-slate-900"
+>
+  <video
+    src="./assets/videos/restaurant.mp4"
+    class="absolute object-cover w-full h-full border-none -z-30"
+    autoplay
+    [muted]="'muted'"
+    loop
+  ></video>
+  <div
+    class="z-10 w-[96%] h-auto relative sm:w-[540px] bg-textWhite rounded-3xl py-20 px-10"
+  >
+    <app-button
+      [icon]="'pi-times'"
+      class="absolute top-6 right-6 -z-20"
+      [routerLink]="'/'"
+    ></app-button>
+    <app-signin
+      *ngIf="!this.signup"
+      (signup)="
+        this.signup = true; this.router.navigate([], { fragment: 'signup' })
+      "
+    ></app-signin>
+    <app-signup *ngIf="this.signup" (signin)="this.signup = false; this.router.navigate([])"></app-signup>
+  </div>
+</div>

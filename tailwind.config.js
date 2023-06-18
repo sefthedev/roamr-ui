@@ -22,8 +22,12 @@ module.exports = {
         'textDark': '#111111',
         'textWhite': '#FCFCFA',
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--gradient-color-stops))',
+      },
     },
   },
   plugins: [],
 }
+
 

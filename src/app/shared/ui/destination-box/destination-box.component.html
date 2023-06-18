@@ -1,12 +1,29 @@
-<div class="relative w-64 h-auto mx-4 my-6 bg-white rounded-md shadow-lg">
-    <img class="object-cover w-full h-48 rounded-t-md" src="{{imageURL}}" alt="Image">
-    <div class="flex items-baseline justify-around px-4 py-2">
-        <h2 class="text-lg font-semibold text-gray-800 truncate">{{destinationName}}</h2>
-        <!-- <button
-            class="relative px-4 py-2 transition-colors bg-white border border-gray-400 rounded-md group hover:bg-gray-200">
-            <i class="font-medium text-gray-700 group-hover:text-gray-900 pi pi-bookmark"></i>
-        </button> -->
+<div
+  class="relative flex flex-col items-center h-auto gap-6 pb-6 m-0 shadow-lg w-72 xl:w-80 rounded-2xl bg-textWhite"
+>
+  <img class="object-cover w-full h-64" src="{{ imageURL }}" alt="Image" />
+  <div
+    class="flex flex-col items-start justify-center order-1 w-full gap-3 px-6 py-0"
+  >
+    <h2 class="text-2xl tracking-tighter truncate font-alice text-textDark">
+      {{ destinationName }}
+    </h2>
+    <h2
+      class="flex items-center justify-start gap-1 text-sm font-normal text-gray-900 truncate"
+    >
+      <i class="pi pi-map-marker text-primary"></i> {{ address }}
+    </h2>
 
-        <app-button color="primary" icon="pi-bookmark"></app-button>
+    <div class="flex flex-row items-center justify-between w-full flex-nowrap">
+      <div class="flex flex-row justify-start gap-1">
+        <i
+          *ngFor="let star of stars; let i = index"
+          class="pi text-primary"
+          [ngClass]="star"
+        >
+        </i>
+      </div>
+      <app-button [color]="saved? 'primary': 'primary-inverse'" icon="pi-bookmark" (buttonClick)="saveDestination()"></app-button>
     </div>
+  </div>
 </div>
