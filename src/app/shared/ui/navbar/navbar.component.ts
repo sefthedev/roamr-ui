@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FirebaseAuthService } from '@app/core/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,15 +8,10 @@ import { FirebaseAuthService } from '@app/core/firebase-auth/firebase-auth.servi
 export class NavbarComponent {
   isMenuOpen: boolean = false;
   searchTerm: string = '';
-  isLoggedIn: boolean;
+  isLoggedIn: boolean = false;
+  constructor() {}
 
-  constructor(private firebaseAuthService: FirebaseAuthService) {
-    this.isLoggedIn = this.firebaseAuthService.isLoggedIn
-  }
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -27,8 +21,7 @@ export class NavbarComponent {
     console.log(this.searchTerm);
   }
 
-  signOut(){
-    this.firebaseAuthService.SignOut()
+  signOut() {
     window.location.reload();
   }
 }

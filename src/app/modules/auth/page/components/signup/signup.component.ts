@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
-import { FirebaseAuthService } from '@app/core/firebase-auth/firebase-auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +13,7 @@ export class SignupComponent implements OnInit {
   isSubmitted: boolean = false;
   @Output() signin: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private firebaseAuthService: FirebaseAuthService) {}
+  constructor() {}
 
   signupForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -58,7 +57,6 @@ export class SignupComponent implements OnInit {
     const username = this.signupForm.get('username')?.value;
 
     if (email && password && username) {
-      this.firebaseAuthService.SignUp(email, password, username)
     }
     this.isSubmitted = true;
   }
